@@ -67,7 +67,7 @@ const StudentForm = () => {
                         <input type="text" className="form-control" name="gender" value={data.gender} onChange={handleChange}/><br/>
                     </div>
                     <div className="form-check">
-                        <button type="submit" className="btn btn-primary justify-content-center">Register Student</button>
+                        <button type="submit" className="btn btn-primary justify-content-center">Add Student</button>
                         <ToastContainer/>
                     </div>
                 </div>
