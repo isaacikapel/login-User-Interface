@@ -1,6 +1,7 @@
 import './App.css';
 import CourseForm from './components/CourseForm';
 import RegForm from './components/RegForm';
+import DisplayReg from './components/DisplayReg';
 import StudentForm from './components/StudentForm';
 import DisplayStudents from './components/DisplayStudents';
 import Home from './components/Home';
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/RegForm">
             <RegForm/>
+          </Route>
+          <Route path="/DisplayReg">
+            <DisplayReg/>
           </Route>
           <Route path="/LoginForm">
             <LoginForm/>

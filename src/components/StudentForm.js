@@ -37,7 +37,7 @@ const StudentForm = () => {
                 autoClose: 3000,
             });
         } else {
-            axios.post("http://localhost:4000/api/student/addStudent", data)
+            axios.post("http://localhost:4000/api/students/addStudent", data)
             .then(res => {
                 setData(res.data);
     
@@ -52,27 +52,24 @@ const StudentForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form">
                 <div className="form2">
-                    <div className="form-group">
-                        <label className="mb">First Name</label>
-                        <input type="text" className="form-control" name="firstName" value={data.firstName} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-group">
-                        <label className="mb">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" value={data.lastName} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-group">
-                        <label className="mb">Gender</label>
-                        <input type="text" className="form-control" name="gender" value={data.gender} onChange={handleChange}/><br/>
-                    </div>
+                     
+                        <input type="text"  placeholder="FirstName"  name="firstName" value={data.firstName} onChange={handleChange}/><br/>
+                    
+                    
+                        <input type="text" placeholder="LastName"  name="lastName" value={data.lastName} onChange={handleChange}/><br/>
+                    
+                    
+                        <input type="text"  placeholder="Gender"  name="gender" value={data.gender} onChange={handleChange}/><br/>
+                    
                     <div className="form-check">
                         <button type="submit" className="btn btn-primary justify-content-center">Add Student</button>
                         <ToastContainer/>
                     </div>
                 </div>
             </form>
-            <div className="btn">
+            <div className="home1 btn">
                 <Link to="/DisplayStudents">Display All Students</Link>
             </div>
         </div>

@@ -5,13 +5,13 @@ const DisplayCourses = () => {
         const [data, setData] = useState ([])
 
         useEffect(() => {
-            axios.get("http://localhost:4000/api/course/getAllCourse")
+            axios.get("http://localhost:4000/api/courses/getAllCourse")
             .then(res => {setData(res.data) })
             .then(err => console.log(err))
         })
     
     return (
-        <table className="mx-auto w-25 table table-hover table-striped table-secondary">
+        <table className="table">
             <thead>
                 <tr>
                     <th>Course Name</th>

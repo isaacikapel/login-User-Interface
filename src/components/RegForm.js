@@ -1,6 +1,8 @@
 import React , { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const RegForm = () => {
     const [data, setData] = useState({
@@ -20,46 +22,57 @@ const RegForm = () => {
         e.preventDefault();
         // Form Validation
         if (data.name.length === 0) {
-            toast.error("Name field cannot be empty", {
+            toast.error(" name field cannot be empty", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 3000,
             });
         } else if (data.email.length === 0) {
-            toast.error("Email field cannot be empty", {
+            toast.error("email field cannot be empty", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 3000,
             });
         } else if (data.password.length === 0) {
-            toast.error("Password field cannot be empty", {
+            toast.error("please input password", {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 3000,
             });
         } else {
-
+            axios.post("http://localhost:4000/api/reg/addReg", data)
+            .then(res => {
+                setData(res.data);
+    
+                toast.success("Registration successfull", {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 3000,
+                })
+            }).catch (err => {
+                console.log(err)
+        })         
     }}
+
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <div className="w-25 p-3 mx-auto">
-                    <div className="form-group">
-                        <label className="mb-1">Name</label>
-                        <input type="text" className="form-control" name="name" value={data.name} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-group">
-                        <label className="mb-1">Email</label>
-                        <input type="email" className="form-control" name="email" value={data.email} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-group">
-                        <label className="mb-1">Password</label>
-                        <input type="password" className="form-control" name="password" value={data.password} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-check mt-3 text-center">
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form2">
+                     
+                        <input type="text"  placeholder="Name"  name="name" value={data.name} onChange={handleChange}/><br/>
+                    
+                    
+                        <input type="text" placeholder="Email"  name="email" value={data.email} onChange={handleChange}/><br/>
+                    
+                    
+                        <input type="text"  placeholder="Confirm assword"  name="password" value={data.password} onChange={handleChange}/><br/>
+                    
+                    <div className="form-check">
                         <button type="submit" className="btn btn-primary justify-content-center">Register</button>
                         <ToastContainer/>
                     </div>
                 </div>
             </form>
+            <div className="home1 btn">
+                <Link to="/DisplayReg">Display Registration Details</Link>
+            </div>
         </div>
     );
 }

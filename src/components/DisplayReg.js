@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const DisplayStudents = () => {
+const DisplayReg = () => {
         const [data, setData] = useState ([])
 
         useEffect(() => {
-            axios.get("http://localhost:4000/api/students/getAllStudent")
+            axios.get("http://localhost:4000/api/reg/getAllReg")
             .then(res => {setData(res.data) })
             .then(err => console.log(err))
         })
@@ -14,17 +14,17 @@ const DisplayStudents = () => {
         <table className="table">
             <td>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Gender</th>
+                    <th> Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
                 </tr>
             </td>
             <tbody>
                 {data.map((d, i) => (
                     <tr key={i}>
-                        <td>{d.firstName}</td>
-                        <td>{d.lastName}</td>
-                        <td>{d.gender}</td>
+                        <td>{d.name}</td>
+                        <td>{d.email}</td>
+                        <td>{d.password}</td>
                     </tr>
                 ))}
             </tbody>
@@ -32,4 +32,4 @@ const DisplayStudents = () => {
     );
 }
 
-export default DisplayStudents;
+export default DisplayReg;

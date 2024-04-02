@@ -25,7 +25,7 @@ const CourseForm = () => {
                 autoClose: 3000,
             });
         } else {
-            axios.post("http://localhost:4000/api/course/addCourse", data)
+            axios.post("http://localhost:4000/api/courses/addCourse", data)
             .then(res => {
                 setData(res.data);
     
@@ -40,14 +40,14 @@ const CourseForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <div className="w-25 p-3 mx-auto">
-                    <div className="form-group">
-                        <label className="mb">Course Name</label>
-                        <input type="text" className="form-control" name="courseName" value={data.courseName} onChange={handleChange}/><br/>
-                    </div>
-                    <div className="form-check mt-3 text-center">
-                        <button type="submit" className="btn btn-primary justify-content-center">Enter Course</button>
+          <form onSubmit={handleSubmit} className="form">
+                <div className="form2">
+                     
+                        <input type="text"  placeholder="courseName"  name="courseName" value={data.courseName} onChange={handleChange}/><br/>
+                    
+                    
+                    <div className="form-check">
+                        <button type="submit" className="btn btn-primary justify-content-center">Add Course</button>
                         <ToastContainer/>
                     </div>
                 </div>
